@@ -35,29 +35,29 @@
 </body>
 </html>
 <script type="text/javascript">
-	window.onload=function(){
-		var I = document.getElementById('img');
-		qr(I,'',370);
-		setInterval(function(){
-			var nodes = I.childNodes;
-			for(var i = 0; i < nodes.length; i++) {
-    			var node = nodes[i];
-    			I.removeChild(node);
-			}
-			var te = document.getElementById('text').value;
-			qr(I,te,370);
-		},1000)
-	}
+	window.onload = function() {
+	var I = document.getElementById('img');
+	qr(I, '', 370);
+	setInterval(function() {
+		var nodes = I.childNodes;
+		for (var i = 0; i < nodes.length; i++) {
+			var node = nodes[i];
+			I.removeChild(node);
+		}
+		var te = document.getElementById('text').value;
+		qr(I, te, 370);
+	}, 1000)
+}
 
 
-	function qr(e,i,s){
-		$(e).qrcode({ 
-    		render		: 'canvas',
-			width		: s,
-			height		: s,
-            background  : '#fff',
-            foreground  : '#000',
-            text        : utf16to8(i)
-		});
-	}
+function qr(e, i, s) {
+	$(e).qrcode({
+		render: 'canvas',
+		width: s,
+		height: s,
+		background: '#fff',
+		foreground: '#000',
+		text: utf16to8(i)
+	});
+}
 </script>
