@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		*{
+			margin: 0;
+			padding: 0;
+		}
+		div{
+			width: 370px;
+			height: 450px;
+			margin: 50px auto;
+		}
+		div p{
+			width: 370px;
+			height: 370px;
+		}
+		div textarea{
+			width: 370px;
+			height: 60px;
+			margin-top: 10px;
+		}
+	</style>
+<script type="text/javascript" src="jquery-3.1.0.min.js"></script>
+<script type="text/javascript" src="jquery.qrcode.min.js"></script>
+<script type="text/javascript" src="utf.js"></script>
+</head>
+<body>
+	<div>
+		<p id="img"></p>
+		<textarea id="text"></textarea>
+	</div>
+</body>
+</html>
+<script type="text/javascript">
+	window.onload=function(){
+		var I = document.getElementById('img');
+		qr(I,'',370);
+		setInterval(function(){
+			var nodes = I.childNodes;
+			for(var i = 0; i < nodes.length; i++) {
+    			var node = nodes[i];
+    			I.removeChild(node);
+			}
+			var te = document.getElementById('text').value;
+			qr(I,te,370);
+		},1000)
+	}
+
+
+	function qr(e,i,s){
+		$(e).qrcode({ 
+    		render		: 'canvas',
+			width		: s,
+			height		: s,
+            background  : '#fff',
+            foreground  : '#000',
+            text        : utf16to8(i)
+		});
+	}
+</script>
